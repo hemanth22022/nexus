@@ -1,0 +1,61 @@
+Branching strategy:
+--------------------------------------------------------------------------------------------------------------------------
+Commands: git branch                     // List all local branches
+          git branch -a                  // List both remote and local branches
+          git branch branch_name         // create an branch
+          git checkout branch_name       // switch to branch
+          git checkout -b branch_name    // create and switch branch
+          git branch -D branch_name      // delete an branch
+=============================================================================================================================
+Merge, Rebase and Cherry-pick:
+=============================================================================================================================
+1. Merge: Merge is an mechanism of combining changes(files/directories - associated commits) from one branch to another branch.
+
+syntax: git merge <branch_name> 
+
+
+eg:  master   M1 M2 M3 M4 M5
+
+          master> git merge develop
+
+    develop   M1 M2 M3 M4 M5
+
+-------------------
+Types of merge:
+-------------------
+a. Fast Forward Merge: This merge happens when there is an single commit.
+
+eg:  master   M1 M2 M3 M4 M5
+
+          master> git merge develop
+
+    develop   M1 M2 M3 M4 M5
+
+
+[root@ip-172-31-8-220 devops-repo]# git merge develop
+Updating 500e5da..2cd2d13
+Fast-forward
+ develop-file1 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 develop-file1
+[root@ip-172-31-8-220 devops-repo]#
+
+
+b. Non fast forward merge:  This merge happens when there is more than one commit.
+                            This is also recursive or ort strategy.
+
+eg:  master   M1 M2 M3 M4 M5 M6 M7 MC[Merge commit - Extra commit - M6 & M7] 
+ 
+       master> git merge develop
+
+    develop   M1 M2 M3 M4 M5 M6
+
+
+[root@ip-172-31-8-220 devops-repo]# git merge develop
+Merge made by the 'ort' strategy.
+ develop-file-2 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 develop-file-2
+[root@ip-172-31-8-220 devops-repo]#
+
+----------------------------------------

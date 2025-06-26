@@ -1,0 +1,81 @@
+Note: "git rm --cached <file>..." to unstage  - First time when we add file to staging area
+       use "git restore <file>..." to discard changes in working directory 
+       "git restore --staged <file>..." to unstage
+=============================================================================================================================
+Branches:
+=============================================================================================================================
+Branch is nothing but an logical directory which contains the changes(files/directories - associated commits).
+Every branch will have unique data.
+
+eg: Ecommerce-website
+      * login-page
+      * logout-page
+      * payment-page
+      * product catalog
+      * Acknowledgement-page
+      * Add-to-cart
+
+Branch(ecommerce-website):
+      * login-page - 100 files - commits
+      * logout-page - 50 files - commits
+      * payment-page - 200 files - commits
+      * product catalog - 500 files - commits
+      * Acknowledgement-page - 30 files - commits
+      * Add-to-cart  - 50 files - commits
+  
+Testing Phase: Payment page is not working properly, they wanted to remove the complete payment page.
+==========================================/////////////////////////============================//////////////////////=============
+Rebase: Rebase is an mechanism for combining changes(files/directories - associated commits) from one branch to another branch.
+           Rebase will rewrite the history on top of base branch.
+           Rebase will keep the history clean.
+           Rebase never creates extra commit like merge.
+
+syntax: git rebase <branch_name> 
+
+
+eg:  develop        D1 D2 D3 D4 D5
+
+       develop> git rebase feature/login
+
+    feature/login   D1 D2 D3 D4 D5
+
+
+eg:  develop        D1 D2 D3 D4 D5 F1 F2 F3
+
+            develop> git rebase feature/login
+
+    feature/login   D1 D2 D3 D4 D5 F1 F2 F3
+
+
+[root@ip-172-31-8-220 devops-repo]# git rebase feature/login
+Successfully rebased and updated refs/heads/develop.
+[root@ip-172-31-8-220 devops-repo]#
+
+----------------------------------------------------------------------------------------------------------------------------
+3. Cherry-pick: Cherry-pick is used for picking up one commit from one branch and put commit into another branch.
+                Cherry-pick will change the commit_id once cherry-pick is completed.
+
+syntax: git cherry-pick <commit-id>
+
+
+eg: feature/login  D1 D2 D3 D4 F2
+
+        feature/login> git cherry-pick F2
+
+    feature/test   D1 D2 D3 D4 F1 F2 F3
+
+
+[root@ip-172-31-8-220 devops-repo]# git cherry-pick 1423e3b
+[feature/login 7f3df6a] Adding feature-test-22 in feature/test branch
+ Date: Thu Mar 6 02:32:59 2025 +0000
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature-test-22
+[root@ip-172-31-8-220 devops-repo]#
+
+=============================================/////////////////////////////===============================////////////////=============
+  
+ Challenges:
+   * Rollback/Revert/deletion - will impact other features or pages
+   * Testing individual page/feature is difficult
+   * No re-useability as everything is combined in single branch.
+

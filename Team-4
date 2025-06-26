@@ -1,0 +1,69 @@
+Note: "git rm --cached <file>..." to unstage  - First time when we add file to staging area
+       use "git restore <file>..." to discard changes in working directory 
+       "git restore --staged <file>..." to unstage
+=============================================================================================================================
+Branches:
+=============================================================================================================================
+Branch is nothing but an logical directory which contains the changes(files/directories - associated commits).
+Every branch will have unique data.
+
+eg: Ecommerce-website
+      * login-page
+      * logout-page
+      * payment-page
+      * product catalog
+      * Acknowledgement-page
+      * Add-to-cart
+
+Branch(ecommerce-website):
+      * login-page - 100 files - commits
+      * logout-page - 50 files - commits
+      * payment-page - 200 files - commits
+      * product catalog - 500 files - commits
+      * Acknowledgement-page - 30 files - commits
+      * Add-to-cart  - 50 files - commits
+  
+Testing Phase: Payment page is not working properly, they wanted to remove the complete payment page.
+  
+ Challenges:
+   * Rollback/Revert/deletion - will impact other features or pages
+   * Testing individual page/feature is difficult
+   * No re-useability as everything is combined in single branch.
+   ==========================///////////////////////===================////////////////
+   Feature wise branches:
+-----------------------------
+1. login-page: branch(login-feature): login.java - commits
+                                      login-security.java  - commits
+                                      login-password.java - commits
+
+
+2. logout-page: branch(logout-feature): logout.java - commits
+                                      logout-security.java  - commits
+                                      logout-password.java - commits
+
+
+.
+.
+.
+.
+.
+.
+Finally combine all the branches into single branch(ecommerce-website) and then build the software(artifact) to deliver to customer.
+
+----------------------------------------------------------------------------------------------------------------------------
+Standard branches:
+----------------------------------------------------------------------------------------------------------------------------
+1. master/main: master/main is used for keeping the updated source code to release/build the final artifact for delivering/deploying into customer environment.
+                We have single master/main branch.
+
+eg: master or main
+
+2. develop: Develop branch is used for developing the application features.
+                We have single develop branch.
+
+eg: develop
+
+3. release: Release branch is used for maintaining the release/version/customer wise code for software/product/application features.
+            We have multiple release branches.
+
+
