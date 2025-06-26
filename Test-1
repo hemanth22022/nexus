@@ -22,11 +22,9 @@ Changes to be committed:
 
 -m message
 
-[root@ip-172-31-8-220 devops-repo]# git commit -m "Adding file.txt"
-[master (root-commit) 22f27c8] Adding file.txt
- 1 file changed, 4 insertions(+)
- create mode 100644 file.txt
-[root@ip-172-31-8-220 devops-repo]#
+
+
+
 [root@ip-172-31-8-220 devops-repo]# git status
 On branch master
 nothing to commit, working tree clean
